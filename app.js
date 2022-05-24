@@ -1,9 +1,9 @@
 const mongodb = require("mongoose");
 const express = require("express");
 const morgan = require("morgan");
-// const studentRouter = require("./router/studentRouter");
-// const teacherRouter = require("./router/teacherRouter");
-// const levelRouter = require("./router/levelRouter");
+const studentRouter = require("./router/studentRouter");
+const teacherRouter = require("./router/teacherRouter");
+const levelRouter = require("./router/levelRouter");
 
 require("dotenv").config();
 
@@ -16,12 +16,10 @@ app.use(express.json({ limit: "5mb" }));
 
 const dbUrl = `mongodb+srv://${process.env.DB_NAME}:${process.env.KEY}@cluster0.9fdwx.mongodb.net/${process.env.USERNAME}?retryWrites=true&w=majority`;
 
-// app.use("/student", studentRouter);
-// app.use("/teacher", teacherRouter);
-// app.use("/level", levelRouter);
-app.get("/", (req, res) => {
-  res.json({ message: "yess please" });
-});
+app.use("/student", studentRouter);
+app.use("/teacher", teacherRouter);
+app.use("/level", levelRouter);
+
 app.use(function (req, res, next) {
   res.status(404).json({ status: 404, mgs: "Not found" });
   return;
