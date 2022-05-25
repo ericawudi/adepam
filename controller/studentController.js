@@ -40,7 +40,7 @@ const getAll = (req, res) => {
       console.log(err);
     });
 };
-const getUser = (req, res) => {
+const getByName = (req, res) => {
   const name = req.params.name;
   Student.find({ name: { $regex: name, $options: "i" } })
     .then((result) => {
@@ -79,7 +79,7 @@ const update = (req, res) => {
 module.exports = {
   create,
   get,
-  getUser,
+  getByName,
   getAll,
   update,
   remove,

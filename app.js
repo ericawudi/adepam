@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const studentRouter = require("./router/studentRouter");
 const teacherRouter = require("./router/teacherRouter");
-const levelRouter = require("./router/levelRouter");
+const procureRouter = require("./router/procureRouter");
 const cors = require("cors");
 
 require("dotenv").config();
@@ -18,7 +18,7 @@ const dbUrl = `mongodb+srv://${process.env.DB_NAME}:${process.env.KEY}@cluster0.
 app.use(cors());
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
-app.use("/level", levelRouter);
+app.use("/procure", procureRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({ status: 404, mgs: "Not found" });

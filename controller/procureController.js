@@ -1,11 +1,9 @@
-// get all teaches
-
-const Teacher = require("../model/teacher");
+const Procure = require("../model/procure");
 
 const create = (req, res) => {
   const body = req.body;
-  const teacher = new Teacher(body);
-  teacher
+  const procure = new Procure(body);
+  procure
     .save()
     .then((result) => {
       res.send(result);
@@ -18,7 +16,7 @@ const create = (req, res) => {
 
 const get = (req, res) => {
   const id = req.params.id;
-  Teacher.findById(id)
+  Procure.findById(id)
     .then((result) => {
       res.send(result);
     })
@@ -29,7 +27,7 @@ const get = (req, res) => {
 };
 
 const getAll = (req, res) => {
-  Teacher.find()
+  Procure.find()
     .then((result) => {
       res.send(result);
     })
@@ -38,9 +36,10 @@ const getAll = (req, res) => {
       console.log(err);
     });
 };
+
 const getByName = (req, res) => {
   const name = req.params.name;
-  Teacher.find({ name: { $regex: name, $options: "i" } })
+  Procure.find({ name: { $regex: name, $options: "i" } })
     .then((result) => {
       res.send(result);
     })
@@ -52,7 +51,7 @@ const getByName = (req, res) => {
 
 const remove = (req, res) => {
   const id = req.params.id;
-  Teacher.findByIdAndDelete(id)
+  Procure.findByIdAndDelete(id)
     .then((result) => {
       res.send(result);
     })
@@ -64,7 +63,7 @@ const remove = (req, res) => {
 
 const update = (req, res) => {
   const id = req.params.id;
-  Teacher.findByIdAndUpdate(id, req.body, { new: true })
+  Procure.findByIdAndUpdate(id, req.body, { new: true })
     .then((result) => {
       res.send(result);
     })
