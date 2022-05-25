@@ -32,6 +32,7 @@ const get = (req, res) => {
 
 const getAll = (req, res) => {
   Student.find()
+    .sort({ updatedAt: -1 })
     .then((result) => {
       res.send(result);
     })

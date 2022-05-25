@@ -30,6 +30,7 @@ const get = (req, res) => {
 
 const getAll = (req, res) => {
   Teacher.find()
+    .sort({ updatedAt: -1 })
     .then((result) => {
       res.send(result);
     })
