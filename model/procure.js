@@ -27,4 +27,4 @@ const procureSchema = new Schema(
 
 const Procure = mongodb.model("Procure", procureSchema);
 
-module.exports = Teacher;
+module.exports = Procure;
