@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const studentRouter = require("./router/studentRouter");
 const teacherRouter = require("./router/teacherRouter");
 const levelRouter = require("./router/levelRouter");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -12,10 +13,9 @@ const PORT = process.env.PORT || 5001;
 
 app.use(morgan("combined"));
 app.use(express.json({ limit: "5mb" }));
-// app.use(express.urlencoded({ limit: "5mb" }));
 
 const dbUrl = `mongodb+srv://${process.env.DB_NAME}:${process.env.KEY}@cluster0.9fdwx.mongodb.net/${process.env.USERNAME}?retryWrites=true&w=majority`;
-
+app.use(cors());
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
 app.use("/level", levelRouter);
