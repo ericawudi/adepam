@@ -34,9 +34,9 @@ const studentSchema = new Schema(
       type: Number,
       default: 0.0,
     },
-    complete: {
-      type: Boolean,
-      default: false,
+    completionStatus: {
+      type: String,
+      required: true,
     },
   },
 
