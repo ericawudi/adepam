@@ -39,8 +39,8 @@ const getAll = (req, res) => {
 };
 
 const getByName = (req, res) => {
-  const name = req.params.name;
-  Procure.find({ name: { $regex: name, $options: "i" } })
+  const model = req.params.name;
+  Procure.find({ model: { $regex: model, $options: "i" } })
     .then((result) => {
       res.send(result);
     })
