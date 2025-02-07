@@ -14,7 +14,8 @@ const PORT = process.env.PORT || 5001;
 app.use(morgan("combined"));
 app.use(express.json({ limit: "5mb" }));
 
-const dbUrl = `mongodb+srv://${process.env.DB_NAME}:${process.env.KEY}@cluster0.9fdwx.mongodb.net/${process.env.USERNAME}?retryWrites=true&w=majority`;
+const dBUrl = `mongodb+srv://${process.env.DB_NAME}:${process.env.KEY}@adepam.9fdwx.mongodb.net/${process.env.USERNAME}?retryWrites=true&w=majority&appName=adepam`;
+
 app.use(cors());
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
@@ -26,7 +27,7 @@ app.use(function (req, res, next) {
 });
 
 const db = mongodb
-  .connect(dbUrl)
+  .connect(dBUrl)
   .then((result) =>
     app.listen(PORT, () => {
       console.log(`http://localhost:${PORT}`);
@@ -34,5 +35,6 @@ const db = mongodb
   )
   .catch((err) => {
     console.log("there was an error connecting to dB ....");
+    console.log({ err });
   })
   .catch((err) => console.log({ err }));
