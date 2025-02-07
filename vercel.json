@@ -5,5 +5,10 @@
       "runtime": "nodejs18.x"
     }
   },
-  "routes": [{ "src": "/(.*)", "dest": "/api/index.js" }]
+  "routes": [{ "src": "/(.*)", "dest": "/api/index.js" }],
+  "env": {
+    "DB_NAME": "adepam",
+    "KEY": "hTk2Mpcp76OF56Bz",
+    "USERNAME": "adepam"
+  }
 }
